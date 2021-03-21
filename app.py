@@ -7,6 +7,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:''@localhost/blog'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
+# TODO: Create Error Page
 
 class Blog(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -27,9 +28,6 @@ def index():
     blogs = Blog.query.order_by(Blog.created_at).all()
     return render_template('index.html', blogs =  blogs)
 
-
-
-
 @app.route('/delete/<int:id>')
 def delete(id):
     blogToDel = Blog.query.get_or_404(id)
@@ -38,18 +36,13 @@ def delete(id):
         db.session.commit()
         return redirect('/')
     except:
-        # TODO: Create Error Page
         return 'error occured'    
-
-
-
 
 @app.route('/blog/<int:id>')
 def blog(id):
     # blog = Blog.query.one()
     blog = Blog.query.get(id)
     return render_template('blog.html', blog = blog)
-
 
 @app.route('/add', methods = ['GET', 'POST'])
 def add():
@@ -67,3 +60,22 @@ def add():
         db.session.commit()
 
         return redirect('/')
+
+@app.route('/edit/<int:id>', methods = ['GET', 'POST'])
+def edit(id):
+
+    blogToEdit = Blog.query.get_or_404(id)
+
+    if request.method == 'GET':
+        return render_template('edit.html', blog = blogToEdit)
+    else:
+        blogToEdit.title = request.form.get('title')
+        blogToEdit.author = request.form.get('author')
+        blogToEdit.content = request.form.get('content')
+        blogToEdit.updated_at = datetime.utcnow
+
+        try:
+            db.session.commit()
+            return redirect('/')
+        except:
+            return 'error occured'
