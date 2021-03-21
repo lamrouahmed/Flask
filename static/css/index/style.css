@@ -1499,6 +1499,50 @@
           align-items: center;
 }
 
+.add p {
+  position: fixed;
+  right: 48%;
+  bottom: 3%;
+  border-radius: 100%;
+  cursor: pointer;
+  -webkit-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
+  width: 3.4em;
+  height: 3.4em;
+  color: #FFF;
+  background-color: #2e3335;
+  font-weight: bolder;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  z-index: 5;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.add p:hover {
+  -webkit-transform: scale(0.9);
+  transform: scale(0.9);
+  -webkit-transition: -webkit-transform 100ms ease-in-out;
+  transition: -webkit-transform 100ms ease-in-out;
+  transition: transform 100ms ease-in-out;
+  transition: transform 100ms ease-in-out, -webkit-transform 100ms ease-in-out;
+}
+.add a {
+  font-size: 2.5rem;
+  margin-bottom: 7%;
+  display: -ms-grid;
+  display: grid;
+  place-content: center;
+  font-weight: 300;
+  color: #FFF;
+}
+
 @-webkit-keyframes delete {
   from {
     -webkit-transform: translateX(0);
@@ -1572,4 +1616,3 @@
             transform: translateX(0);
   }
 }
-/*# sourceMappingURL=style.css.map */
