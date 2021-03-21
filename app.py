@@ -34,7 +34,7 @@ def delete(id):
         db.session.commit()
         return redirect('/')
     except:
-        return 'error occured'    
+        return render_template('404.html')    
 
 @app.route('/blog/<int:id>')
 def blog(id):
