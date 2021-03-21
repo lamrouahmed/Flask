@@ -28,7 +28,7 @@ def index():
 
 @app.route('/delete/<int:id>')
 def delete(id):
-    blogToDel = Blog.query.get_or_404(id)
+    blogToDel = Blog.query.get(id)
     try:
         db.session.delete(blogToDel)
         db.session.commit()
@@ -39,7 +39,11 @@ def delete(id):
 @app.route('/blog/<int:id>')
 def blog(id):
     blog = Blog.query.get(id)
-    return render_template('blog.html', blog = blog)
+
+    if blog == None:
+        return render_template('404.html')
+    else:
+        return render_template('blog.html', blog = blog)
 
 @app.route('/add', methods = ['GET', 'POST'])
 def add():
@@ -57,12 +61,14 @@ def add():
 @app.route('/edit/<int:id>', methods = ['GET', 'POST'])
 def edit(id):
 
-    blogToEdit = Blog.query.get_or_404(id)
+    blogToEdit = Blog.query.get(id)
+
+    if blogToEdit == None:
+        return render_template('404.html')
 
     if request.method == 'GET':
         return render_template('edit.html', blog = blogToEdit)
     else:
-        
         blogToEdit.title = request.form.get('title')
         blogToEdit.author = request.form.get('author')
         blogToEdit.content = request.form.get('content')
