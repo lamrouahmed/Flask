@@ -16,7 +16,7 @@ class Blog(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow)
 
-    def __init(self, id, title, content, author):
+    def __init__(self, title, content, author):
         self.id = id
         self.title = title
         self.content = content
@@ -38,6 +38,7 @@ def delete(id):
         db.session.commit()
         return redirect('/')
     except:
+        # TODO: Create Error Page
         return 'error occured'    
 
 
@@ -45,6 +46,24 @@ def delete(id):
 
 @app.route('/blog/<int:id>')
 def blog(id):
-    blog = Blog.query.one()
+    # blog = Blog.query.one()
+    blog = Blog.query.get(id)
     return render_template('blog.html', blog = blog)
 
+
+@app.route('/add', methods = ['GET', 'POST'])
+def add():
+    if request.method == 'GET':
+        return render_template('add.html')
+    else:
+        
+        title = request.form.get('title')
+        author = request.form.get('author')
+        content = request.form.get('content')
+
+        blog = Blog(title, content, author)
+
+        db.session.add(blog)
+        db.session.commit()
+
+        return redirect('/')

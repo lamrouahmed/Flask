@@ -9,13 +9,7 @@
 {% endblock title %}
 
 {% block body %}
-
-
-
-
-
-
-<div class="Wrapper">
+    <div class="Wrapper">
         <div class="demandeWrapper">
             <div class="actions">
                 <div class="searchContainer">
@@ -40,69 +34,66 @@
             </div>
             <div class="blogs">
                 {% for blog in blogs %}
-                <div class="blog" id="user" data-key="{{blog.id}}" data-search="{{blog.id}} {{blog.title}} {{blog.author}}">
+                    <div class="blog" id="user" data-key="{{blog.id}}" data-search="{{blog.id}} {{blog.title}} {{blog.author}}">
 
 
-                    <div class="user_id">
-                        <p>{{blog.id}}</p>
+                        <div class="user_id">
+                            <p>{{blog.id}}</p>
+                        </div>
+                        <div class="l_name">
+                            <p>{{blog.title}}</p>
+                        </div>
+                        <div class="f_name">
+                            <p>{{blog.author}}</p>
+                        </div>
+
+
+                        <div class="phone">
+                            <p>{{blog.created_at.date()}}</p>
+                        </div>
+                        
+
+
+                        <div class="btns">
+                            <a class="modify" data-action="modify" data-id="">
+                                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 383.947 383.947"
+                                    style="enable-background:new 0 0 383.947 383.947;" xml:space="preserve">
+                                    <polygon points="0,303.947 0,383.947 80,383.947 316.053,147.893 236.053,67.893 			">
+                                    </polygon>
+                                    <path d="M377.707,56.053L327.893,6.24c-8.32-8.32-21.867-8.32-30.187,0l-39.04,39.04l80,80l39.04-39.04
+                                    C386.027,77.92,386.027,64.373,377.707,56.053z">
+                                    </path>
+                                </svg>
+                            </a>
+                            <a href="/delete/{{blog.id}}" class="delete" data-action="delete" data-id="">
+                                <svg data-id="115" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 384 384"
+                                    style="enable-background:new 0 0 384 384;" xml:space="preserve">
+
+                                    <path
+                                        d="M64,341.333C64,364.907,83.093,384,106.667,384h170.667C300.907,384,320,364.907,320,341.333v-256H64V341.333z">
+                                    </path>
+                                    <polygon
+                                        points="266.667,21.333 245.333,0 138.667,0 117.333,21.333 42.667,21.333 42.667,64 341.333,64 341.333,21.333 			">
+                                    </polygon>
+                                </svg>
+                            </a>
+                            <a href="/blog/{{blog.id}}" class="order" data-action="order" data-id="">
+                                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                                            <path d="M488.727,0H302.545c-12.853,0-23.273,10.42-23.273,23.273c0,12.853,10.42,23.273,23.273,23.273h129.997L192.999,286.09    c-9.089,9.089-9.089,23.823,0,32.912c4.543,4.544,10.499,6.816,16.455,6.816c5.956,0,11.913-2.271,16.457-6.817L465.455,79.458    v129.997c0,12.853,10.42,23.273,23.273,23.273c12.853,0,23.273-10.42,23.273-23.273V23.273C512,10.42,501.58,0,488.727,0z"/>
+                                            <path d="M395.636,232.727c-12.853,0-23.273,10.42-23.273,23.273v209.455H46.545V139.636H256c12.853,0,23.273-10.42,23.273-23.273    S268.853,93.091,256,93.091H23.273C10.42,93.091,0,103.511,0,116.364v372.364C0,501.58,10.42,512,23.273,512h372.364    c12.853,0,23.273-10.42,23.273-23.273V256C418.909,243.147,408.489,232.727,395.636,232.727z"/>                                 
+                                </svg>
+                            </a>
+
+                        </div>
                     </div>
-                    <div class="l_name">
-                        <p>{{blog.title}}</p>
-                    </div>
-                    <div class="f_name">
-                        <p>{{blog.author}}</p>
-                    </div>
-
-
-                    <div class="phone">
-                        <p>{{blog.created_at.date()}}</p>
-                    </div>
-                    
-
-
-                    <div class="btns">
-                        <a class="modify" data-action="modify" data-id="">
-                            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-                                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 383.947 383.947"
-                                style="enable-background:new 0 0 383.947 383.947;" xml:space="preserve">
-                                <polygon points="0,303.947 0,383.947 80,383.947 316.053,147.893 236.053,67.893 			">
-                                </polygon>
-                                <path d="M377.707,56.053L327.893,6.24c-8.32-8.32-21.867-8.32-30.187,0l-39.04,39.04l80,80l39.04-39.04
-				                C386.027,77.92,386.027,64.373,377.707,56.053z">
-                                </path>
-                            </svg>
-                        </a>
-                        <a href="/delete/{{blog.id}}" class="delete" data-action="delete" data-id="">
-                            <svg data-id="115" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-                                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 384 384"
-                                style="enable-background:new 0 0 384 384;" xml:space="preserve">
-
-                                <path
-                                    d="M64,341.333C64,364.907,83.093,384,106.667,384h170.667C300.907,384,320,364.907,320,341.333v-256H64V341.333z">
-                                </path>
-                                <polygon
-                                    points="266.667,21.333 245.333,0 138.667,0 117.333,21.333 42.667,21.333 42.667,64 341.333,64 341.333,21.333 			">
-                                </polygon>
-                            </svg>
-                        </a>
-                        <a href="/blog/{{blog.id}}" class="order" data-action="order" data-id="">
-                            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
-                                        <path d="M488.727,0H302.545c-12.853,0-23.273,10.42-23.273,23.273c0,12.853,10.42,23.273,23.273,23.273h129.997L192.999,286.09    c-9.089,9.089-9.089,23.823,0,32.912c4.543,4.544,10.499,6.816,16.455,6.816c5.956,0,11.913-2.271,16.457-6.817L465.455,79.458    v129.997c0,12.853,10.42,23.273,23.273,23.273c12.853,0,23.273-10.42,23.273-23.273V23.273C512,10.42,501.58,0,488.727,0z"/>
-                                        <path d="M395.636,232.727c-12.853,0-23.273,10.42-23.273,23.273v209.455H46.545V139.636H256c12.853,0,23.273-10.42,23.273-23.273    S268.853,93.091,256,93.091H23.273C10.42,93.091,0,103.511,0,116.364v372.364C0,501.58,10.42,512,23.273,512h372.364    c12.853,0,23.273-10.42,23.273-23.273V256C418.909,243.147,408.489,232.727,395.636,232.727z"/>                                 
-                            </svg>
-                        </a>
-
-                    </div>
-                </div>
                 {% endfor %}
             </div>
         </div>
-</div>
+    </div>
 
-
-
-    
-
+    <a href="{{ url_for('add') }}">Add New Blog</a>
 {% endblock body %}
 
 {% block script %}
