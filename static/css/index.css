@@ -1,0 +1,124 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
+.wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.wrapper::after {
+  content: '';
+  position: absolute;
+  display: block;
+  height: 104%;
+  width: 5px;
+  background-color: #FFF;
+  top: -15px;
+  right: 50%;
+  -webkit-transform: rotate(15deg);
+          transform: rotate(15deg);
+}
+
+.wrapper > div {
+  height: 100%;
+  width: 50%;
+  position: relative;
+}
+
+.wrapper .svg {
+  height: 100%;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: #272525;
+  cursor: pointer;
+  position: relative;
+}
+
+.wrapper .svg:hover svg {
+  opacity: 1;
+  -webkit-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
+}
+
+.wrapper .svg:hover::after {
+  left: 42%;
+  opacity: 1;
+  -webkit-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
+}
+
+.wrapper .svg::after {
+  content: 'Text';
+  position: absolute;
+  color: #FFF;
+  font-size: 3rem;
+  bottom: 20%;
+  opacity: 0;
+  -webkit-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
+  left: 20%;
+  font-weight: 200;
+}
+
+.wrapper .svg svg {
+  height: 40%;
+  width: 40%;
+  fill: #FFF;
+  opacity: .5;
+  -webkit-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
+}
+
+.wrapper .svg1::after {
+  content: 'Utilisateurs';
+}
+
+.wrapper .svg1:hover::after {
+  left: 34%;
+  opacity: 1;
+  -webkit-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
+}
+
+.wrapper .svg2::after {
+  content: 'Admin';
+}
+
+.wrapper .svg2:hover::after {
+  left: 40%;
+  opacity: 1;
+  -webkit-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
+}
+/*# sourceMappingURL=style.css.map */

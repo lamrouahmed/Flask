@@ -5,8 +5,11 @@ from datetime import datetime
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:''@localhost/blog'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
 db = SQLAlchemy(app)
 
+ADMIN_USERNAME = 'admin'
+ADMIN_PASSWORD = 'flaskblog'
 
 class Blog(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -23,8 +26,30 @@ class Blog(db.Model):
 
 @app.route('/')
 def index():
+    return render_template('index.html')
+
+@app.route('/admin')
+def admin():
+    return render_template('admin_login.html')
+
+@app.route('/authenticate_admin', methods = ['POST'])
+def authenticate_admin():
+    username = request.form.get('username')
+    password = request.form.get('password')
+
+    if username == ADMIN_USERNAME and password == ADMIN_PASSWORD:
+        # * Login Success
+        blogs = Blog.query.order_by(Blog.created_at).all()
+
+        return render_template('admin_index.html', blogs = blogs)
+    else:
+        # ! Login Unsuccessful
+        return render_template('admin_login.html', error = True)
+
+@app.route('/users')
+def users():
     blogs = Blog.query.order_by(Blog.created_at).all()
-    return render_template('index.html', blogs =  blogs)
+    return render_template('users_index.html', blogs =  blogs)
 
 @app.route('/delete/<int:id>')
 def delete(id):
@@ -76,5 +101,3 @@ def edit(id):
         blogToEdit.updated_at = timeNow.strftime('%Y-%m-%d %H:%M:%S')
         db.session.commit()
         return redirect('/')
-
-        

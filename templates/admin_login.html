@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+
+{% block css %}
+  <link rel="stylesheet" href="../static/css/form/form.css">
+{% endblock css %}
+
+{% block title %}
+  <title>Admin Login</title>
+{% endblock title %}
+
+{% block body %}
+  {% if error %}
+    <h2 style="text-align: center;">Login Error, Please check username and password</h2>
+  {% endif %}
+
+  <div class="wrapper">
+    <div class="formWrapper">
+        <div class="logo">
+          <img src="../static/assets/admin_login.png"/>
+          <h2 class="title">Admin Login</h2>
+      </div>
+      <form method="POST" action="{{ url_for('authenticate_admin') }}" class="form">
+        <div class="blogInfo">
+            <label class="label">
+                <input class="input" type="text" name="username" placeholder="Username">
+                <span class="border"></span>
+            </label>
+        </div>
+        <div class="blogInfo">
+            <label class="label">
+                <input class="input" type="password" name="password" placeholder="Password">
+                <span class="border"></span>
+            </label>
+        </div>
+
+          <button class="add">Login</button>
+      </form> 
+    </div>
+  </div>
+{% endblock body %}

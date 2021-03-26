@@ -1,106 +1,46 @@
 {% extends 'layout.html' %}
 
 {% block css %}
-<link rel="stylesheet" href="../static/css/index/style.css">
+  <link rel="stylesheet" href="../static/css/index.css">
 {% endblock css %}
 
 {% block title %}
-<title>Home</title>
+  <title>FlaskBlogger</title>
 {% endblock title %}
 
 {% block body %}
-    <div class="Wrapper">
-        <div class="demandeWrapper">
-            <div class="actions">
-                <div class="searchContainer">
-                    <input type="text" class="search">
-                    <div class="searchSvg">
-                        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 511.999 511.999"
-                            style="enable-background:new 0 0 511.999 511.999;" xml:space="preserve">
-
-                            <path
-                                d="M508.874,478.708L360.142,329.976c28.21-34.827,45.191-79.103,45.191-127.309c0-111.75-90.917-202.667-202.667-202.667    S0,90.917,0,202.667s90.917,202.667,202.667,202.667c48.206,0,92.482-16.982,127.309-45.191l148.732,148.732    c4.167,4.165,10.919,4.165,15.086,0l15.081-15.082C513.04,489.627,513.04,482.873,508.874,478.708z M202.667,362.667    c-88.229,0-160-71.771-160-160s71.771-160,160-160s160,71.771,160,160S290.896,362.667,202.667,362.667z" />
-
-                    </div>
-                </div>
+  <div class="wrapper">
+    <div class="auteurs">
+        <a href="{{ url_for('users') }}">
+            <div class="svg svg1">
+                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 19.738 19.738"
+                    style="enable-background:new 0 0 19.738 19.738;" xml:space="preserve">
+                    <path d="M18.18,19.738h-2c0-3.374-2.83-6.118-6.311-6.118s-6.31,2.745-6.31,6.118h-2
+                  c0-4.478,3.729-8.118,8.311-8.118C14.451,11.62,18.18,15.26,18.18,19.738z" />
+                    <path d="M9.87,10.97c-3.023,0-5.484-2.462-5.484-5.485C4.385,2.461,6.846,0,9.87,0
+                  c3.025,0,5.486,2.46,5.486,5.485S12.895,10.97,9.87,10.97z M9.87,2C7.948,2,6.385,3.563,6.385,5.485S7.948,8.97,9.87,8.97
+                  c1.923,0,3.486-1.563,3.486-3.485S11.791,2,9.87,2z" />
+                </svg>
             </div>
-            <div class="header">
-                <div class="id_h">id</div>
-                <div class="id_h">Title</div>
-                <div class="type_lavage_h">Author</div>
-                <div class="prix_h">Created_at</div>
-                <div class="action_h">Action</div>
-            </div>
-            <div class="blogs">
-                {% for blog in blogs %}
-                    <div class="blog" id="user" data-key="{{blog.id}}" data-search="{{blog.id}} {{blog.title}} {{blog.author}}">
-
-
-                        <div class="user_id">
-                            <p>{{blog.id}}</p>
-                        </div>
-                        <div class="l_name">
-                            <p>{{blog.title}}</p>
-                        </div>
-                        <div class="f_name">
-                            <p>{{blog.author}}</p>
-                        </div>
-
-
-                        <div class="phone">
-                            <p>{{blog.created_at.date()}}</p>
-                        </div>
-                        
-
-
-                        <div class="btns">
-                            <a href="/edit/{{blog.id}}" class="modify" data-action="modify" data-id="">
-                                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 383.947 383.947"
-                                    style="enable-background:new 0 0 383.947 383.947;" xml:space="preserve">
-                                    <polygon points="0,303.947 0,383.947 80,383.947 316.053,147.893 236.053,67.893 			">
-                                    </polygon>
-                                    <path d="M377.707,56.053L327.893,6.24c-8.32-8.32-21.867-8.32-30.187,0l-39.04,39.04l80,80l39.04-39.04
-                                    C386.027,77.92,386.027,64.373,377.707,56.053z">
-                                    </path>
-                                </svg>
-                            </a>
-                            <a href="/delete/{{blog.id}}" class="delete" data-action="delete" data-id="">
-                                <svg data-id="115" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 384 384"
-                                    style="enable-background:new 0 0 384 384;" xml:space="preserve">
-
-                                    <path
-                                        d="M64,341.333C64,364.907,83.093,384,106.667,384h170.667C300.907,384,320,364.907,320,341.333v-256H64V341.333z">
-                                    </path>
-                                    <polygon
-                                        points="266.667,21.333 245.333,0 138.667,0 117.333,21.333 42.667,21.333 42.667,64 341.333,64 341.333,21.333 			">
-                                    </polygon>
-                                </svg>
-                            </a>
-                            <a href="/blog/{{blog.id}}" class="order" data-action="order" data-id="">
-                                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
-                                            <path d="M488.727,0H302.545c-12.853,0-23.273,10.42-23.273,23.273c0,12.853,10.42,23.273,23.273,23.273h129.997L192.999,286.09    c-9.089,9.089-9.089,23.823,0,32.912c4.543,4.544,10.499,6.816,16.455,6.816c5.956,0,11.913-2.271,16.457-6.817L465.455,79.458    v129.997c0,12.853,10.42,23.273,23.273,23.273c12.853,0,23.273-10.42,23.273-23.273V23.273C512,10.42,501.58,0,488.727,0z"/>
-                                            <path d="M395.636,232.727c-12.853,0-23.273,10.42-23.273,23.273v209.455H46.545V139.636H256c12.853,0,23.273-10.42,23.273-23.273    S268.853,93.091,256,93.091H23.273C10.42,93.091,0,103.511,0,116.364v372.364C0,501.58,10.42,512,23.273,512h372.364    c12.853,0,23.273-10.42,23.273-23.273V256C418.909,243.147,408.489,232.727,395.636,232.727z"/>                                 
-                                </svg>
-                            </a>
-
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
+        </a>
     </div>
-
-    <a href="{{ url_for('add') }}">Add New Blog</a>
-    <div class="add">
-        <p for="addId" id="label">
-            <a href="{{ url_for('add') }}">+</a>
-        </p>
+    <div class="livres">
+        <a href="{{ url_for('admin') }}">
+            <div class="svg svg2">
+              <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+              viewBox="0 0 17.531 17.531" style="enable-background:new 0 0 17.531 17.531;" xml:space="preserve">
+                <circle style="fill:#030104;" cx="8.931" cy="3.035" r="3.035"/>
+                <path style="fill:#030104;" d="M11.611,6.346H9.436C9.629,6.532,9.391,7.16,9.233,7.508c-0.308-0.055-0.626-0.05-0.935,0.013
+                  C8.143,7.173,7.896,6.534,8.09,6.346H5.976c-4.034,0.073-3.89,3.035-3.89,3.035l-0.002,6.915h0.004
+                  c0,0.016-0.001,0.033-0.001,0.049c0,0.656,0.532,1.186,1.186,1.186c0.655,0,1.186-0.529,1.186-1.186
+                  c0-0.016-0.003-0.033-0.003-0.049h0.003V9.899H5.2l-0.002,7.36l7.107,0.012l-0.002-7.402h0.771v6.427h0.002c0,0,0,0.004,0,0.008
+                  c0,0.654,0.531,1.186,1.188,1.186c0.652,0,1.183-0.531,1.183-1.186c0-0.004,0-0.008,0-0.008V9.381
+                  C15.184,6.299,11.611,6.346,11.611,6.346z M8.787,14.278l-0.779-0.975l0.393-5.141c0.238-0.043,0.483-0.046,0.725-0.01l0.01,0.107
+                  l0.189,2.487l0.195,2.557L8.787,14.278z"/>
+              </svg>
+            </div>
+        </a>
     </div>
+  </div>
 {% endblock body %}
-
-{% block script %}
-    <script src="../static/js/index.js"></script>
-{% endblock script %}
