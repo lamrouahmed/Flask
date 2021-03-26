@@ -181,9 +181,38 @@
   -webkit-transform: scale(0.98);
           transform: scale(0.98);
 }
-/*# sourceMappingURL=form.css.map */
 
-/* ! Added by Hamza */
 textarea {
   resize: none;
+}
+
+.error .formWrapper{
+  animation: invalidFields 200ms 3 ease-in-out;
+}
+
+.error {
+  animation: error 1000ms 1 ease-in-out;
+}
+
+@keyframes invalidFields {
+  0% {
+      transform: translateX(-3%);
+  }
+
+  50% {
+      transform: translateX(3%);
+  }
+
+  100% {
+      transform: translateX(0);
+  }
+}
+@keyframes error {
+  from{
+      background-color: #ea5d5d;
+  }
+
+  to {
+      background-color: #f0f4f7;
+  }
 }

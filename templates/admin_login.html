@@ -9,11 +9,8 @@
 {% endblock title %}
 
 {% block body %}
-  {% if error %}
-    <h2 style="text-align: center;">Login Error, Please check username and password</h2>
-  {% endif %}
-
-  <div class="wrapper">
+ 
+  <div class="wrapper {{'error' if error }}">
     <div class="formWrapper">
         <div class="logo">
           <img src="../static/assets/admin_login.png"/>
