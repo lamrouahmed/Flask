@@ -101,7 +101,7 @@ body {
 }
 
 .wrapper .svg1::after {
-  content: 'Utilisateurs';
+  content: 'Guest';
 }
 
 .wrapper .svg1:hover::after {
