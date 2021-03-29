@@ -57,7 +57,8 @@ def delete(id):
     try:
         db.session.delete(blogToDel)
         db.session.commit()
-        return redirect('/')
+        blogs = Blog.query.order_by(Blog.created_at).all()
+        return render_template('admin_index.html', blogs = blogs)
     except:
         return render_template('404.html')    
 
@@ -81,7 +82,9 @@ def add():
         blog = Blog(title, content, author)
         db.session.add(blog)
         db.session.commit()
-        return redirect('/')
+        blogs = Blog.query.order_by(Blog.created_at).all()
+        return render_template('admin_index.html', blogs = blogs)
+
 
 @app.route('/edit/<int:id>', methods = ['GET', 'POST'])
 def edit(id):
@@ -100,4 +103,6 @@ def edit(id):
         timeNow = datetime.now()
         blogToEdit.updated_at = timeNow.strftime('%Y-%m-%d %H:%M:%S')
         db.session.commit()
-        return redirect('/')
+        blogs = Blog.query.order_by(Blog.created_at).all()
+        return render_template('admin_index.html', blogs = blogs)
+
